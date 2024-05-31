@@ -1,0 +1,182 @@
+proxy-groups:
+  # Main proxy server selector
+  - name: Target-Node
+    type: select
+    include-all-proxies: true
+    proxies:
+      - DIRECT
+  # just SSH
+  - name: SSH(22)
+    type: select
+    proxies:
+      - Target-Node
+      - DIRECT
+  # ZeroTier-One Peer to Peer
+  - name: ZeroTier-One(9993)
+    type: select
+    proxies:
+      - Target-Node
+      - DIRECT
+  # 哔哩哔哩(BiliBili)
+  - name: BiliBili
+    type: select
+    proxies:
+      - Target-Node
+      - DIRECT
+  # TUNA-Mirror
+  - name: TUNA-Mirror
+    type: select
+    proxies:
+      - Target-Node
+      - DIRECT
+  # Unity 3D
+  - name: Unity
+    type: select
+    proxies:
+      - Target-Node
+      - DIRECT
+  # Flathub
+  - name: Flathub
+    type: select
+    proxies:
+      - Target-Node
+      - DIRECT
+  # Steam store
+  - name: Steam
+    type: select
+    proxies:
+      - Target-Node
+      - DIRECT
+  # Steam-Download
+  - name: Steam-Download
+    type: select
+    proxies:
+      - Target-Node
+      - DIRECT
+  # Steam-P2P
+  - name: Steam-P2P
+    type: select
+    proxies:
+      - Target-Node
+      - DIRECT
+  # VRChat
+  - name: VRChat
+    type: select
+    proxies:
+      - Target-Node
+      - DIRECT
+  # docker.io
+  - name: docker.io
+    type: select
+    proxies:
+      - Target-Node
+      - DIRECT
+  # China ip
+  - name: CN-ip
+    type: select
+    proxies:
+      - Target-Node
+      - DIRECT
+  # For default UDP request
+  - name: Default-UDP
+    type: select
+    proxies:
+      - Target-Node
+      - DIRECT
+  # For each request that dosn't have a match
+  - name: Default
+    type: select
+    proxies:
+      - Target-Node
+      - DIRECT
+rules:
+  # SSH
+  - DST-PORT,22,SSH(22)
+  # ZeroTier-One
+  - DST-PORT,9993,ZeroTier-One(9993)
+  # BiliBili
+  - DOMAIN-SUFFIX,bilicomic.com,BiliBili
+  - DOMAIN-SUFFIX,bilicomics.com,BiliBili
+  - DOMAIN-SUFFIX,manga.bilibili.com,BiliBili
+  - DOMAIN-SUFFIX,acg.tv,BiliBili
+  - DOMAIN-SUFFIX,acgvideo.com,BiliBili
+  - DOMAIN-SUFFIX,animetamashi.cn,BiliBili
+  - DOMAIN-SUFFIX,animetamashi.com,BiliBili
+  - DOMAIN-SUFFIX,anitama.cn,BiliBili
+  - DOMAIN-SUFFIX,anitama.net,BiliBili
+  - DOMAIN-SUFFIX,b23.tv,BiliBili
+  - DOMAIN-SUFFIX,bigfun.cn,BiliBili
+  - DOMAIN-SUFFIX,bigfunapp.cn,BiliBili
+  - DOMAIN-SUFFIX,bili22.cn,BiliBili
+  - DOMAIN-SUFFIX,bili2233.cn,BiliBili
+  - DOMAIN-SUFFIX,bili23.cn,BiliBili
+  - DOMAIN-SUFFIX,bili33.cn,BiliBili
+  - DOMAIN-SUFFIX,biliapi.com,BiliBili
+  - DOMAIN-SUFFIX,biliapi.net,BiliBili
+  - DOMAIN-SUFFIX,bilibili.cc,BiliBili
+  - DOMAIN-SUFFIX,bilibili.cn,BiliBili
+  - DOMAIN-SUFFIX,bilibili.com,BiliBili
+  - DOMAIN-SUFFIX,bilibili.net,BiliBili
+  - DOMAIN-SUFFIX,bilibili.tv,BiliBili
+  - DOMAIN-SUFFIX,bilibilipay.cn,BiliBili
+  - DOMAIN-SUFFIX,bilibilipay.com,BiliBili
+  - DOMAIN-SUFFIX,bilicdn1.com,BiliBili
+  - DOMAIN-SUFFIX,bilicdn2.com,BiliBili
+  - DOMAIN-SUFFIX,bilicdn3.com,BiliBili
+  - DOMAIN-SUFFIX,bilicdn4.com,BiliBili
+  - DOMAIN-SUFFIX,bilicdn5.com,BiliBili
+  - DOMAIN-SUFFIX,biligo.com,BiliBili
+  - DOMAIN-SUFFIX,biliimg.com,BiliBili
+  - DOMAIN-SUFFIX,biliintl.com,BiliBili
+  - DOMAIN-SUFFIX,bilivideo.cn,BiliBili
+  - DOMAIN-SUFFIX,bilivideo.com,BiliBili
+  - DOMAIN-SUFFIX,bilivideo.net,BiliBili
+  - DOMAIN-SUFFIX,dreamcast.hk,BiliBili
+  - DOMAIN-SUFFIX,hdslb.com,BiliBili
+  - DOMAIN-SUFFIX,hdslb.org,BiliBili
+  - DOMAIN-SUFFIX,im9.com,BiliBili
+  - DOMAIN-SUFFIX,maoercdn.com,BiliBili
+  - DOMAIN-SUFFIX,mincdn.com,BiliBili
+  - DOMAIN-SUFFIX,yo9.com,BiliBili
+  - DOMAIN-SUFFIX,upos-hz-mirrorakam.akamaized.net,BiliBili
+  # TUNA-Mirror
+  - DOMAIN-SUFFIX,tuna.tsinghua.edu.cn,TUNA-Mirror
+  # Unity
+  - DOMAIN-SUFFIX,unity.com,Unity
+  - DOMAIN-SUFFIX,unity3d.com,Unity
+  - DOMAIN-SUFFIX,unity.cn,Unity
+  # Flathub
+  - DOMAIN-SUFFIX,flathub.org,Flathub
+  # Steam
+  - DOMAIN-SUFFIX,steampowered.com,Steam
+  - DOMAIN-SUFFIX,steamcommunity.com,Steam
+  - DOMAIN-SUFFIX,steamgames.com,Steam
+  - DOMAIN-SUFFIX,steamusercontent.com,Steam
+  # Steam-Download
+  - DOMAIN-SUFFIX,steamstatic.com,Steam-Download
+  - DOMAIN-SUFFIX,steamcontent.com,Steam-Download
+  - DOMAIN-SUFFIX,steamchina.com,Steam-Download
+  - DOMAIN-SUFFIX,akamaihd.net,Steam-Download
+  - DOMAIN-SUFFIX,dl.steam.clngaa.com,Steam-Download
+  - DOMAIN-SUFFIX,dl.steam.ksyna.com,Steam-Download
+  - DOMAIN-SUFFIX,st.dl.bscstorage.net,Steam-Download
+  - DOMAIN-SUFFIX,st.dl.eccdnx.com,Steam-Download
+  - DOMAIN-SUFFIX,st.dl.pinyuncloud.com,Steam-Download
+  - DOMAIN-SUFFIX,steampipe.steamcontent.tnkjmec.com,Steam-Download
+  - DOMAIN-SUFFIX,steampowered.com.8686c.com,Steam-Download
+  - DOMAIN-SUFFIX,steamstatic.com.8686c.com,Steam-Download
+  - DOMAIN-SUFFIX,xz.pphimalayanrt.com,Steam-Download
+  # Steam-P2P
+  - SRC-PORT,3478/4379/4380/27014-27030,Steam-P2P
+  # VRChat
+  - DOMAIN-SUFFIX,vrchat.com,VRChat
+  - DOMAIN-SUFFIX,vrchat.net,VRChat
+  - DOMAIN-SUFFIX,vrchat.cloud,VRChat
+  # docker.io
+  - DOMAIN-SUFFIX,docker.io,docker.io
+  # CH-ip
+  - GEOIP,CN,CN-ip
+  # Default-UDP
+  - NETWORK,udp,Default-UDP
+  # Default
+  - MATCH,Default

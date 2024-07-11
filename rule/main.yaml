@@ -6,55 +6,67 @@ proxy-groups:
     proxies:
       - DIRECT
   # just SSH
-  - name: SSH(22)
+  - name: SSH(port:22)
     type: select
     proxies:
-      - Target-Node
       - DIRECT
+      - Target-Node
   # ZeroTier-One Peer to Peer
-  - name: ZeroTier-One(9993)
+  - name: ZeroTier-One(port:9993)
     type: select
     proxies:
-      - Target-Node
       - DIRECT
+      - Target-Node
+  # Steam-P2P
+  - name: Steam-P2P(port)
+    type: select
+    proxies:
+      - DIRECT
+      - Target-Node
+  # qbittorrent
+  - name: qbittorrent
+    type: select
+    proxies:
+      - DIRECT
+      - Target-Node
   # 哔哩哔哩(BiliBili)
   - name: BiliBili
     type: select
     proxies:
-      - Target-Node
       - DIRECT
+      - Target-Node
   # TUNA-Mirror
   - name: TUNA-Mirror
     type: select
     proxies:
-      - Target-Node
       - DIRECT
+      - Target-Node
   # Unity 3D
   - name: Unity
     type: select
     proxies:
-      - Target-Node
       - DIRECT
+      - Target-Node
   # Flathub
   - name: Flathub
     type: select
     proxies:
-      - Target-Node
       - DIRECT
+      - Target-Node
   # Steam store
   - name: Steam
     type: select
     proxies:
-      - Target-Node
       - DIRECT
+      - Target-Node
   # Steam-Download
   - name: Steam-Download
     type: select
     proxies:
-      - Target-Node
       - DIRECT
-  # Steam-P2P
-  - name: Steam-P2P
+      - Target-Node
+  # VRChat Download
+  - name: VRChat-Download
     type: select
     proxies:
       - Target-Node
@@ -71,29 +83,33 @@ proxy-groups:
     proxies:
       - Target-Node
       - DIRECT
-  # China ip
-  - name: CN-ip
+  # 必应(Bing)
+  - name: Microsoft-Bing
     type: select
     proxies:
       - Target-Node
       - DIRECT
-  # For default UDP request
-  - name: Default-UDP
+  # dl.google.com
+  - name: dl.google.com
     type: select
     proxies:
-      - Target-Node
       - DIRECT
-  # For each request that dosn't have a match
-  - name: Default
+      - Target-Node
+  # Apple(keyword)
+  - name: Apple(keyword)
     type: select
     proxies:
       - Target-Node
       - DIRECT
 rules:
   # SSH
-  - DST-PORT,22,SSH(22)
+  - DST-PORT,22,SSH(port:22)
   # ZeroTier-One
-  - DST-PORT,9993,ZeroTier-One(9993)
+  - DST-PORT,9993,ZeroTier-One(port:9993)
+  # Steam-P2P
+  - SRC-PORT,3478/4379/4380/27014-27030,Steam-P2P
+  # qbittorrent
+  - PROCESS-NAME,qbittorrent,qbittorrent
   # BiliBili
   - DOMAIN-SUFFIX,bilicomic.com,BiliBili
   - DOMAIN-SUFFIX,bilicomics.com,BiliBili
@@ -166,17 +182,29 @@ rules:
   - DOMAIN-SUFFIX,steampowered.com.8686c.com,Steam-Download
   - DOMAIN-SUFFIX,steamstatic.com.8686c.com,Steam-Download
   - DOMAIN-SUFFIX,xz.pphimalayanrt.com,Steam-Download
-  # Steam-P2P
-  - SRC-PORT,3478/4379/4380/27014-27030,Steam-P2P
+  # VRChat-Download
+  - DOMAIN-SUFFIX,pipeline.vrchat.cloud,VRChat-Download
+  - DOMAIN-SUFFIX,files.vrchat.cloud,VRChat-Download
   # VRChat
   - DOMAIN-SUFFIX,vrchat.com,VRChat
   - DOMAIN-SUFFIX,vrchat.net,VRChat
   - DOMAIN-SUFFIX,vrchat.cloud,VRChat
   # docker.io
   - DOMAIN-SUFFIX,docker.io,docker.io
-  # CH-ip
-  - GEOIP,CN,CN-ip
-  # Default-UDP
-  - NETWORK,udp,Default-UDP
-  # Default
-  - MATCH,Default
+  # Microsoft Bing
+  - DOMAIN-SUFFIX,bi.ng,Microsoft-Bing
+  - DOMAIN-SUFFIX,bingapis.com,Microsoft-Bing
+  - DOMAIN-SUFFIX,bing.com,Microsoft-Bing
+  - DOMAIN-SUFFIX,bing.com.bo,Microsoft-Bing
+  - DOMAIN-SUFFIX,bing.com.co,Microsoft-Bing
+  - DOMAIN-SUFFIX,bing.com.cy,Microsoft-Bing
+  - DOMAIN-SUFFIX,bing.com.gt,Microsoft-Bing
+  - DOMAIN-SUFFIX,bingforbusiness.com,Microsoft-Bing
+  - DOMAIN-SUFFIX,bing-int.com,Microsoft-Bing
+  - DOMAIN-SUFFIX,bing.jp,Microsoft-Bing
+  - DOMAIN-SUFFIX,bing.net,Microsoft-Bing
+  - DOMAIN-SUFFIX,bing.office.net,Microsoft-Bing
+  - DOMAIN-SUFFIX,cortana.ai,Microsoft-Bing
+  - DOMAIN-SUFFIX,windowssearch.com,Microsoft-Bing
+  # Apple(keyword)
+  - DOMAIN-KEYWORD,apple,Apple(keyword)

@@ -1,0 +1,20 @@
+proxy-groups:
+  # For default UDP request
+  - name: Default-UDP
+    type: select
+    proxies:
+      - Target-Node
+      - DIRECT
+      - REJECT
+      - REJECT-DROP
+  # For each request that dosn't have a match
+  - name: Default
+    type: select
+    proxies:
+      - Target-Node
+      - DIRECT
+rules:
+  # Default-UDP
+  - NETWORK,udp,Default-UDP
+  # Default
+  - MATCH,Default

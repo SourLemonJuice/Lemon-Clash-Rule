@@ -107,7 +107,7 @@ rules:
   # ZeroTier-One
   - DST-PORT,9993,ZeroTier-One(port:9993)
   # Steam-P2P
-  - SRC-PORT,3478/4379/4380/27014-27030,Steam-P2P
+  - SRC-PORT,3478/4379/4380/27014-27030,Steam-P2P(port)
   # qbittorrent
   - PROCESS-NAME,qbittorrent,qbittorrent
   # BiliBili

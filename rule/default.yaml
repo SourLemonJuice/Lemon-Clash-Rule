@@ -1,9 +1,12 @@
+_lemon-rule:
+  selected-node-name: &selected-node-name 🏳️‍⚧️Target Node
+
 proxy-groups:
   # For default UDP request
   - name: Default-UDP
     type: select
     proxies:
-      - Target-Node
+      - *selected-node-name
       - DIRECT
       - REJECT
       - REJECT-DROP
@@ -11,7 +14,7 @@ proxy-groups:
   - name: Default
     type: select
     proxies:
-      - Target-Node
+      - *selected-node-name
       - DIRECT
 rules:
   # Default-UDP

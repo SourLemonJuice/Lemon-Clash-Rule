@@ -1,6 +1,9 @@
+_lemon-rule:
+  selected-node-name: &selected-node-name 🏳️‍⚧️Target Node
+
 proxy-groups:
   # Main proxy server selector
-  - name: Target-Node
+  - name: *selected-node-name
     type: select
     include-all-proxies: true
     proxies:
@@ -10,96 +13,96 @@ proxy-groups:
     type: select
     proxies:
       - DIRECT
-      - Target-Node
+      - *selected-node-name
   # ZeroTier-One Peer to Peer
   - name: ZeroTier-One(port:9993)
     type: select
     proxies:
       - DIRECT
-      - Target-Node
+      - *selected-node-name
   # Steam-P2P
   - name: Steam-P2P(port)
     type: select
     proxies:
       - DIRECT
-      - Target-Node
+      - *selected-node-name
   # qbittorrent
   - name: qbittorrent
     type: select
     proxies:
       - DIRECT
-      - Target-Node
+      - *selected-node-name
   # 哔哩哔哩(BiliBili)
   - name: BiliBili
     type: select
     proxies:
       - DIRECT
-      - Target-Node
+      - *selected-node-name
   # TUNA-Mirror
   - name: TUNA-Mirror
     type: select
     proxies:
       - DIRECT
-      - Target-Node
+      - *selected-node-name
   # Unity 3D
   - name: Unity
     type: select
     proxies:
       - DIRECT
-      - Target-Node
+      - *selected-node-name
   # Flathub
   - name: Flathub
     type: select
     proxies:
       - DIRECT
-      - Target-Node
+      - *selected-node-name
   # Steam store
   - name: Steam
     type: select
     proxies:
       - DIRECT
-      - Target-Node
+      - *selected-node-name
   # Steam-Download
   - name: Steam-Download
     type: select
     proxies:
       - DIRECT
-      - Target-Node
+      - *selected-node-name
   # VRChat Download
   - name: VRChat-Download
     type: select
     proxies:
-      - Target-Node
+      - *selected-node-name
       - DIRECT
   # VRChat
   - name: VRChat
     type: select
     proxies:
-      - Target-Node
+      - *selected-node-name
       - DIRECT
   # docker.io
   - name: docker.io
     type: select
     proxies:
-      - Target-Node
+      - *selected-node-name
       - DIRECT
   # 必应(Bing)
   - name: Microsoft-Bing
     type: select
     proxies:
-      - Target-Node
+      - *selected-node-name
       - DIRECT
   # dl.google.com
   - name: dl.google.com
     type: select
     proxies:
       - DIRECT
-      - Target-Node
+      - *selected-node-name
   # Apple(keyword)
   - name: Apple(keyword)
     type: select
     proxies:
-      - Target-Node
+      - *selected-node-name
       - DIRECT
 rules:
   # SSH
